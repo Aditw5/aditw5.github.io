@@ -12,23 +12,100 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
     <link rel="stylesheet" href="./css/style.css" />
 
-    <!-- OPTIONAL: inline tweaks only (does not touch external css file) -->
     <style>
-        /* keep your existing style.css as main source */
+        /* --- PERBAIKAN TAMPILAN HEADER & MOBILE --- */
+
+        /* Memastikan header memiliki ruang yang cukup */
+        .header-content {
+            padding: 80px 0 50px 0;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Mengubah daftar skill menjadi sistem Tags agar rapi saat ganti baris */
         .small-desc {
-            margin-top: 8px;
-            opacity: 0.9;
-            line-height: 1.6;
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            opacity: 1;
         }
 
-        .small-desc .sep {
-            margin: 0 6px;
-            opacity: 0.6;
+        .skill-item {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(123, 74, 226, 0.1);
+            /* Warna aksen ungu transparan */
+            color: #555;
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            border: 1px solid rgba(123, 74, 226, 0.2);
+            transition: 0.3s;
         }
 
-        .skill-title i {
+        .skill-item:hover {
+            background: #7b4ae2;
+            color: #fff;
+        }
+
+        .skill-item i {
             margin-right: 8px;
-            opacity: 0.9;
+            font-size: 1rem;
+        }
+
+        /* CSS KHUSUS MOBILE (SCREEN < 850px) */
+        @media (max-width: 850px) {
+            .grid-2 {
+                display: flex !important;
+                flex-direction: column-reverse;
+                /* Gambar muncul duluan di atas, teks di bawah */
+                text-align: center;
+                gap: 40px;
+            }
+
+            .header-title {
+                font-size: 2.5rem !important;
+                /* Perkecil ukuran nama di HP */
+                margin-bottom: 15px;
+            }
+
+            .header-content .text p {
+                font-size: 1.1rem;
+                padding: 0 10px;
+            }
+
+            .small-desc {
+                justify-content: center;
+                /* Pusatkan tag skill di mobile */
+                margin-bottom: 30px;
+            }
+
+            .column-2.image {
+                display: flex;
+                justify-content: center;
+                position: relative;
+            }
+
+            .img-element {
+                max-width: 180px !important;
+                /* Batasi ukuran foto agar tidak memenuhi layar */
+                width: 10%;
+                height: auto;
+            }
+
+            /* Sembunyikan elemen dekorasi yang mengganggu di layar sempit */
+            .points2,
+            .shape {
+                opacity: 0.3;
+            }
+
+            .btn {
+                width: 80%;
+                /* Tombol download CV lebih lebar di HP */
+                margin: 0 auto;
+            }
         }
     </style>
 </head>
@@ -52,7 +129,7 @@
             <nav>
                 <div class="container">
                     <div class="logo">
-                        <img src="./img/logo.png" alt="Logo" />
+                        <!-- <img src="./img/logo.png" alt="Logo" /> -->
                     </div>
 
                     <div class="links">
@@ -61,7 +138,7 @@
                             <li><a href="#services">Services</a></li>
                             <li><a href="#portfolio">Portfolio</a></li>
                             <li><a href="#about">About</a></li>
-                            <li><a href="#testimonials">Testimonials</a></li>
+                            <!-- <li><a href="#testimonials">Testimonials</a></li> -->
                             <li><a href="#contact">Contact</a></li>
                             <li>
                                 <a href="mailto:aditwiran19@gmail.com" class="active">Hire me</a>
@@ -75,7 +152,6 @@
                 </div>
             </nav>
 
-            <!-- Main section  -->
             <div class="header-content">
                 <div class="container grid-2">
                     <div class="column-1">
@@ -87,30 +163,24 @@
                             </p>
 
                             <div class="small-desc">
-                                <span><i class="fab fa-flutter"></i> Flutter</span>
-                                <span class="sep">•</span>
-                                <span><i class="fab fa-js"></i> JavaScript</span>
-                                <span class="sep">•</span>
-                                <span><i class="fas fa-code"></i> TypeScript</span>
-                                <span class="sep">•</span>
-                                <span><i class="fab fa-laravel"></i> Laravel</span>
-                                <span class="sep">•</span>
-                                <span><i class="fab fa-vuejs"></i> Vue.js</span>
-                                <span class="sep">•</span>
-                                <span><i class="fas fa-database"></i> PostgreSQL / MongoDB / MySQL</span>
-                                <span class="sep">•</span>
-                                <span><i class="fab fa-git-alt"></i> Git</span>
-                                <span class="sep">•</span>
-                                <span><i class="fas fa-server"></i> VPS (Ubuntu) + Nginx</span>
+                                <span class="skill-item"><i class="fab fa-flutter"></i> Flutter</span>
+                                <span class="skill-item"><i class="fab fa-vuejs"></i> Vue.js</span>
+                                <span class="skill-item"><i class="fab fa-js"></i> JavaScript</span>
+                                <span class="skill-item"><i class="fas fa-code"></i> TypeScript</span>
+                                <span class="skill-item"><i class="fab fa-laravel"></i> Laravel</span>
+                                <span class="skill-item"><i class="fab fa-golang"></i> Golang</span>
+                                <span class="skill-item"><i class="fas fa-database"></i> SQL / NoSQL</span>
+                                <span class="skill-item"><i class="fab fa-git-alt"></i> Git</span>
+                                <span class="skill-item"><i class="fas fa-server"></i> VPS & Nginx</span>
                             </div>
                         </div>
 
-                        <a href="./img/cv.pdf" target="_blank" class="btn">Download CV</a>
+                        <a href="./img/cv.pdf" target="_blank" class="btn" style="margin-top: 25px;">Download CV</a>
                     </div>
 
                     <div class="column-2 image">
                         <img src="./img/shapes/points2.png" class="points points2" alt="points" />
-                        <img src="./img/person.png" class="img-element z-index" alt="main" />
+                        <img src="./img/person.png" style="width: 70%;" class="img-element z-index" alt="Adi Tiya Wiranda" />
                     </div>
                 </div>
             </div>
@@ -309,7 +379,7 @@
                                 </div>
                             </div>
                         </a> -->
-<!-- 
+                        <!-- 
                         <a href="https://play.google.com/store/apps/details?id=com.memebaaz.MemeBaaz" target="_blank">
                             <div class="grid-item ui appdev">
                                 <div class="gallery-image">
@@ -430,7 +500,7 @@
             <div class="container">
                 <div class="wrap">
                     <div class="record-circle">
-                        <h2 class="number add-plus" data-num="2">0</h2>
+                        <h2 class="number add-plus" data-num="3">0</h2>
                         <h4 class="sub-title">Years Experience</h4>
                     </div>
                 </div>
@@ -444,7 +514,7 @@
 
                 <div class="wrap">
                     <div class="record-circle">
-                        <h2 class="number add-plus" data-num="20">0</h2>
+                        <h2 class="number add-plus" data-num="10">0</h2>
                         <h4 class="sub-title">Integrations</h4>
                     </div>
                 </div>
@@ -459,7 +529,7 @@
         </section>
 
         <!-- Testimonials (left as-is) -->
-        <section class="testimonials section" id="testimonials">
+        <!-- <section class="testimonials section" id="testimonials">
             <div class="container">
                 <div class="section-header">
                     <h3 class="title" data-title="What People Say">Testimonials</h3>
@@ -533,7 +603,7 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> -->
 
         <!-- Contact -->
         <section class="contact" id="contact">
